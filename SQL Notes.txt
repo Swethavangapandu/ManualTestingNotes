@@ -1,0 +1,231 @@
+
+Database Testing :
+
+Performing operations in FrontEnd (AUT) , validating at Backend (Database) is called Database Testing.
+
+
+RDBMS (Relation Database Mangement Systems)
+
+ORACLE , SQL SERVER , IBM DB2 etc ..
+
+
+
+need of SQL ?
+
+SQL stands for Structured Query Language  which is a common used to communicate with
+any RDBMS like ORACLE , SQL SERVER , IBM DB2 ,My SQL etc ..
+
+										SQL
+								
+			-------------------------------------------------------------					
+			|								|							 |
+
+		 DDL								DML							DCL&TCL
+		 
+	Data Definition Language	 		Data Manipulation				Data Control Language
+	
+		- CREATE						- INSERT						- GRANT 
+		- ALTER							- UPDATE						- REVOKE
+		- DROP							- DELETE						- BEGIN Transaction
+		- TRUNCATE 						- SELECT 						- Commit Transaction
+		- RENAME							- JOINS						- Rollback Transaction
+											- SUB Queries
+		 
+		 
+		 
+My SQL Server :
+
+download and install 
+
+https://www.mysql.com/downloads/
+
+Click on "MySQL Community (GPL) Downloads »"
+
+Click on "MySQL Installer for Windows"
+
+under the tab "General Availability (GA) Releases "
+
+
+download the msi file of "Windows (x86, 32-bit), MSI Installer"
+
+Data types in SQL :
+
+CHAR(size)	A FIXED length string (can contain letters, numbers, and special characters). 
+The size parameter specifies the column length in characters - can be from 0 to 255. Default is 1
+
+
+VARCHAR(size)	A VARIABLE length string (can contain letters, numbers, and special characters).
+The size parameter specifies the maximum string length in characters - can be from 0 to 65535
+
+
+INT(size)	A medium integer. Signed range is from -2147483648 to 2147483647. 
+Unsigned range is from 0 to 4294967295. The size parameter specifies the maximum display width (which is 255)
+
+DOUBLE(size, d)	A normal-size floating point number. 
+The total number of digits is specified in size. The number of digits after the decimal point is specified in the d parameter
+
+DECIMAL(size, d)	An exact fixed-point number. The total number of digits is specified in size. The number of digits after the decimal point is specified in the d parameter. The maximum number for size is 65. 
+The maximum number for d is 30. The default value for size is 10. The default value for d is 0.
+
+DATE	A date. Format: YYYY-MM-DD. The supported range is from '1000-01-01' to '9999-12-31'
+
+
+CREATE TABLE table_name (
+    column1 datatype,
+    column2 datatype,
+    column3 datatype,
+   ....
+);
+
+
+https://justinsomnia.org/2009/04/the-emp-and-dept-tables-for-mysql/
+
+
+
+Microsoft Windows [Version 10.0.22621.2428]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Riyaz>mysql -u root -p
+Enter password: **************
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 23
+Server version: 8.0.35 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> create database testdb;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| testdb             |
+| world              |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> use testdb;
+Database changed
+mysql> CREATE TABLE emp (
+    ->   empno decimal(4,0) NOT NULL,
+    ->   ename varchar(10) default NULL,
+    ->   job varchar(9) default NULL,
+    ->   mgr decimal(4,0) default NULL,
+    ->   hiredate date default NULL,
+    ->   sal decimal(7,2) default NULL,
+    ->   comm decimal(7,2) default NULL,
+    ->   deptno decimal(2,0) default NULL
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select * from emp;
+Empty set (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7369','SMITH','CLERK','7902','1980-12-17','800.00',NULL,'20');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7499','ALLEN','SALESMAN','7698','1981-02-20','1600.00','300.00','30');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7521','WARD','SALESMAN','7698','1981-02-22','1250.00','500.00','30');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7566','JONES','MANAGER','7839','1981-04-02','2975.00',NULL,'20');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7654','MARTIN','SALESMAN','7698','1981-09-28','1250.00','1400.00','30');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7698','BLAKE','MANAGER','7839','1981-05-01','2850.00',NULL,'30');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7782','CLARK','MANAGER','7839','1981-06-09','2450.00',NULL,'10');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7788','SCOTT','ANALYST','7566','1982-12-09','3000.00',NULL,'20');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7839','KING','PRESIDENT',NULL,'1981-11-17','5000.00',NULL,'10');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7844','TURNER','SALESMAN','7698','1981-09-08','1500.00','0.00','30');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7876','ADAMS','CLERK','7788','1983-01-12','1100.00',NULL,'20');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7900','JAMES','CLERK','7698','1981-12-03','950.00',NULL,'30');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7902','FORD','ANALYST','7566','1981-12-03','3000.00',NULL,'20');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO emp VALUES ('7934','MILLER','CLERK','7782','1982-01-23','1300.00',NULL,'10');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> CREATE TABLE dept (
+    ->   deptno decimal(2,0) default NULL,
+    ->   dname varchar(14) default NULL,
+    ->   loc varchar(13) default NULL
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> INSERT INTO dept VALUES ('10','ACCOUNTING','NEW YORK');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO dept VALUES ('20','RESEARCH','DALLAS');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO dept VALUES ('30','SALES','CHICAGO');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO dept VALUES ('40','OPERATIONS','BOSTON');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>
